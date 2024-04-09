@@ -169,11 +169,15 @@ python distillation.py --max_path_length=150 --extra_params=mugandshelf,mugandsh
 python distillation.py --extra_params=booknshelve,booknshelve,booknshelve_debug_high_rot_randomness,no_action_rand --max_path_length=130 --filename=booknshelvenewsimpcd --run_path=locobot-learn/booknshelve.usdppo-finetune/ruk0ihdc --model_name=policy_finetune_step_210 --datafolder=/data/pulkitag/data/marcel/data/ --num_envs=9 --max_demos=2500 --eval_freq=1 --use_state --visualize_traj
 ```
 ### Collecting distractor data
-TODO
 ```
-python distillation.py --extra_params=booknshelve,booknshelve,booknshelve_debug_high_rot_randomness,no_action_rand --max_path_length=130 --filename=booknshelvenewfromcam --run_path=locobot-learn/booknshelve.usdppo-finetune/ruk0ihdc --model_name=policy_finetune_step_210 --datafolder=/data/pulkitag/data/marcel/data/ --visualize_traj --run_path_student= --model_name_student= --max_demos=2000
+python distillation.py --max_path_length=80 --extra_params=wooden_drawer_bigger,drawer_debug_extra_randomness --filename=drawerdistractorsfixedv2 --run_path=locobot-learn/drawerbiggerhandle.usdppo-finetune/cpyibf8w --model_name=model_policy_16 --from_ppo --datafolder=/data/pulkitag/data/marcel/data/ --eval_freq=1 --use_state --visualize_traj --policy_batch_size=32 --max_demos=5000 --num_envs=9 --policy_train_steps=1 --distractors=distractors_fixed --seed=2
 ```
+
 ### Running Dagger
+
+```
+python distillation.py --max_path_length=65 --extra_params=wooden_drawer_bigger,drawer_debug_high_randomness,no_action_rand --filename=drawerfromrealdistractors,drawerbiggerreal --run_path=locobot-learn/drawerbiggerhandle.usdppo-finetune/l3zbpqta --model_name=model_policy_196 --from_ppo --datafolder=/data/scratch-oc40/pulkitag/marcel --eval_freq=1 --use_state --visualize_traj --policy_batch_size=32 --policy_train_steps=10000 --eval_freq=3 --max_demos=500 --num_envs=5 --run_path_student=locobot-learn/distillation_drawer_bigger/7vl0dkb3 --model_name_student=policy_distill_step_17 --dagger --sampling_expert=0 --policy_batch_size=8
+```
 
 
 
