@@ -60,7 +60,7 @@ You should be ready to go :) Test it our running the teleoperation script below
 ## Pipeline:
 - TODO add Figure from the paper 
 
-- Create your environment using the [RialTo GUI]()
+- Create your environment using the [RialTo GUI](https://github.com/real-to-sim-to-real/RialToGUI)
 
 
 ## Running the code
