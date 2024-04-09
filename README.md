@@ -163,6 +163,19 @@ python distillation.py --extra_params=booknshelve,booknshelve,booknshelve_debug_
 
 
 ## Running in the real world
+### Install environment
+We use [Polymetis](https://facebookresearch.github.io/fairo/polymetis/). You would need to install polymetis on the robot side. We give the instructions on how to install and create the environments on the GPU side.
+
+```
+conda create -n franka-env-new-cuda python=3.8.15
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install -c pytorch -c fair-robotics -c aihabitat -c conda-forge polymetis
+```
+
+Clone and install [airobot](https://github.com/Improbable-AI/airobot)
+Clone and install [improbable_rdt]()
+
+
 
 ### Evaluation
 ```
