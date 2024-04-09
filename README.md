@@ -70,14 +70,14 @@ conda develop dependencies
 You should be ready to go :) Test it our running the teleoperation script below
 
 ## Pipeline:
-
-![alt text](https://github.com/real-to-sim-to-real/RialToPolicyLearning/blob/main/materials/teaserv14.pdf)
+https://github.com/real-to-sim-to-real/RialToPolicyLearning/blob/main/materials/teaserv14.pdf
+![alt text](https://github.com/real-to-sim-to-real/RialToPolicyLearning/blob/main/materials/teaserv14.pdf?raw=true)
 
 - Create your environment using the [RialTo GUI](https://github.com/real-to-sim-to-real/RialToGUI)
 
 
 ## Running the code
-![alt text](https://github.com/real-to-sim-to-real/RialToPolicyLearning/blob/main/materials/taskrandomizationv2.pdf)
+![alt text](https://github.com/real-to-sim-to-real/RialToPolicyLearning/blob/main/materials/taskrandomizationv2.pdf?raw=true)
 
 ### Collect teleoperation data in sim
 
