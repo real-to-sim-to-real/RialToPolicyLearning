@@ -1,5 +1,17 @@
 # RialTo Policy Learning
+This repository provides the official implementation of the RialTo system, as proposed in *Reconciling Reality through Simulation: A Real-to-Sim-to-Real approach for Robust Manipulation*
+The manuscript is available on [arXiv](https://arxiv.org/abs/2403.03949). See the [project page](https://real-to-sim-to-real.github.io/RialTo/)
 
+If you use this codebase, please cite
+
+```
+@article{torne2024reconciling,
+  title={Reconciling Reality through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation},
+  author={Torne, Marcel and Simeonov, Anthony and Li, Zechu and Chan, April and Chen, Tao and Gupta, Abhishek and Agrawal, Pulkit},
+  journal={arXiv preprint arXiv:2403.03949},
+  year={2024}
+}
+```
 ## Installation
 
 1. Download omniverse: https://www.nvidia.com/en-us/omniverse/
@@ -58,12 +70,14 @@ conda develop dependencies
 You should be ready to go :) Test it our running the teleoperation script below
 
 ## Pipeline:
-- TODO add Figure from the paper 
+![alt text](https://github.com/Improbable-AI/human-guided-exploration/blob/main/materials/inline_tasks.png?raw=true)
 
 - Create your environment using the [RialTo GUI](https://github.com/real-to-sim-to-real/RialToGUI)
 
 
 ## Running the code
+![alt text](https://github.com/Improbable-AI/human-guided-exploration/blob/main/materials/inline_tasks.png?raw=true)
+
 ### Collect teleoperation data in sim
 
 - booknshelf
