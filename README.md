@@ -1,4 +1,4 @@
-# Policy Learning
+# RialTo Policy Learning
 
 ## Installation
 
@@ -57,13 +57,14 @@ conda develop dependencies
 
 You should be ready to go :) Test it our running the teleoperation script below
 
-# Pipeline:
+## Pipeline:
 - TODO add Figure from the paper 
 
 - Create your environment using the [RialTo GUI]()
 
 
-#### Collect teleoperation data in sim
+## Running the code
+### Collect teleoperation data in sim
 
 - booknshelf
 
@@ -149,7 +150,9 @@ python distillation.py --extra_params=booknshelve,booknshelve,booknshelve_debug_
 
 
 
-# Evaluation in the real world
+## Running in the real world
+
+### Evaluation
 ```
 conda activate franka-env-new-cuda
 export RDT_SOURCE_DIR=~/improbable_rdt/src/rdt
