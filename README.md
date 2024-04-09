@@ -58,21 +58,9 @@ conda develop dependencies
 You should be ready to go :) Test it our running the teleoperation script below
 
 # Pipeline:
-- obtain mesh of the desired scene using Polycam photo mode 
+- TODO add Figure from the paper 
 
-- Export GLTB medium quality
-
-- Import into our GUI, modify the mesh add joints, sites, fixed joint
-
-- Save as .usdz or .usd file
-
-- Create environment:
-    - Extract .usdz into folder (double click)
-    - open model.usda inside folder with isaac-sim
-    - Verify physics are correct by pressing play on isaac-sim
-    - Save file into USDAssets/scenes/ as a usd file
-    - create entry inside config file for the environment (look at the other examples, e.g. cabinet)
-    - create entry for the randomness level (e.g. cabinet_mid_randomness)
+- Create your environment using the [RialTo GUI]()
 
 
 #### Collect teleoperation data in sim
