@@ -1,0 +1,71 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujocoinclude>
+  <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="3 5"/>
+  <option timestep="0.0025"/>
+  <asset>
+    <mesh name="motor" file="../dclaw/meshes/xh_base_high_poly.stl" scale=".001 .001 .001"/>
+    <mesh name="motor_hull" file="../dclaw/meshes/xh_base_hull.stl" scale=".001 .001 .001"/>
+    <mesh name="valve_4" file="../dclaw_stations/meshes/valve_4_high_poly.stl" scale=".001 .001 .001"/>
+    <mesh name="valve_3" file="../dclaw_stations/meshes/valve_3_high_poly.stl" scale=".001 .001 .001"/>
+    <mesh name="station_base" file="../dclaw_stations/meshes/station_plastic_base.stl" scale=".001 .001 .001"/>
+    <mesh name="station_metal_base" file="../dclaw_stations/meshes/station_metal_base.stl" scale=".001 .001 .001"/>
+    <mesh name="station_surface" file="../dclaw_stations/meshes/station_surface.stl" scale=".001 .001 .001"/>
+    <mesh name="station_plastic_walls" file="../dclaw_stations/meshes/station_plastic_walls.stl" scale=".001 .001 .001"/>
+    <material name="station_metal_grey" specular="1" shininess="1" rgba="0.5 0.5 0.5 1.0"/>
+    <material name="plastic_white" specular="0.3" shininess="0" rgba="1 1 1 1"/>
+    <material name="plastic_grey" specular="0.3" shininess="0" rgba="0.5 0.5 0.5 1.0"/>
+    <material name="plastic_black" specular="0.3" shininess="0" rgba="0.02 0.02 0.02 1.0"/>
+    <material name="plastic_transparent" specular="0.3" shininess="0" rgba="1 1 1 0.4"/>
+  </asset>
+  <default>
+    <default class="station">
+      <joint limited="true" damping=".1" armature="0.001"/>
+      <geom contype="1" conaffinity="1" condim="4" group="2" margin="0.0005"/>
+      <site group="2"/>
+      <default class="station_viz">
+        <geom contype="0" conaffinity="0" type="mesh"/>
+        <default class="station_viz_metal_grey">
+          <geom material="station_metal_grey"/>
+        </default>
+        <default class="station_viz_plastic_black">
+          <geom material="plastic_black"/>
+        </default>
+        <default class="station_viz_plastic_grey">
+          <geom material="plastic_grey"/>
+        </default>
+        <default class="station_viz_plastic_white">
+          <geom material="plastic_white"/>
+        </default>
+        <default class="station_viz_plastic_transparent">
+          <geom material="plastic_transparent"/>
+        </default>
+      </default>
+      <default class="station_phy">
+        <geom contype="1" conaffinity="1" group="4" type="mesh" rgba="0.0 0.0 1.0 .3"/>
+        <site group="4"/>
+        <default class="station_phy_metal">
+          <geom material="station_metal_grey"/>
+        </default>
+        <default class="station_phy_plastic">
+          <geom material="station_metal_grey" friction=".2 0.005 0.0001"/>
+        </default>
+      </default>
+    </default>
+  </default>
+</mujocoinclude>

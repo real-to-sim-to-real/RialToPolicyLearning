@@ -1,0 +1,47 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujoco model="dkitty-v2.1">
+  <include file="../scenes/basic_scene.xml"/>
+  <include file="assets/dependenciesA_xh-v2.1.xml"/>
+  <include file="assets/dependenciesB_xh-v2.1.xml"/>
+  <compiler meshdir="."/>
+  <worldbody>
+    <body name="A:kitty_frame" pos="0.2 0 0.3">
+      <camera name="A:trackingZ" pos="0 0 3" zaxis="0 0 3" mode="trackcom"/>
+      <camera name="A:trackingY" pos="1.5 1.5 .35" xyaxes="-.7 1 0 0 -.3 1" mode="trackcom"/>
+      <joint name="A:Tx" pos="0 0 0" axis="1 0 0" limited="true" type="slide" range="-5 5"/>
+      <joint name="A:Ty" pos="0 0 0" axis="0 1 0" limited="true" type="slide" range="-5 5"/>
+      <joint name="A:Tz" pos="0 0 0" axis="0 0 1" limited="true" type="slide" range="-2 2"/>
+      <joint name="A:Rx" pos="0 0 0" axis="1 0 0" limited="true" range="-1.57 1.57"/>
+      <joint name="A:Ry" pos="0 0 0" axis="0 1 0" limited="true" range="-1.57 1.57"/>
+      <joint name="A:Rz" pos="0 0 0" axis="0 0 1" limited="true" range="-1.57 1.57"/>
+      <include file="assets/chainA_xh-v2.1.xml"/>
+    </body>
+    <body name="B:kitty_frame" pos="-.2 0 0.3">
+      <camera name="B:trackingZ" pos="0 0 3" zaxis="0 0 3" mode="trackcom"/>
+      <camera name="B:trackingY" pos="1.5 1.5 .35" xyaxes="-.7 1 0 0 -.3 1" mode="trackcom"/>
+      <joint name="B:Tx" pos="0 0 0" axis="1 0 0" limited="true" type="slide" range="-5 5"/>
+      <joint name="B:Ty" pos="0 0 0" axis="0 1 0" limited="true" type="slide" range="-5 5"/>
+      <joint name="B:Tz" pos="0 0 0" axis="0 0 1" limited="true" type="slide" range="-2 2"/>
+      <joint name="B:Rx" pos="0 0 0" axis="1 0 0" limited="true" range="-1.57 1.57"/>
+      <joint name="B:Ry" pos="0 0 0" axis="0 1 0" limited="true" range="-1.57 1.57"/>
+      <joint name="B:Rz" pos="0 0 0" axis="0 0 1" limited="true" range="-1.57 1.57"/>
+      <include file="assets/chainB_xh-v2.1.xml"/>
+    </body>
+  </worldbody>
+</mujoco>

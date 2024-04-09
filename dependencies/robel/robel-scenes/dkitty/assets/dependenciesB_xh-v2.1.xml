@@ -1,0 +1,59 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujocoinclude>
+  <actuator>
+    <position name="B:FRJ10" joint="B:FRJ10" class="dkitty" ctrlrange="-3.419 0.279"/>
+    <position name="B:FRJ11" joint="B:FRJ11" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="B:FRJ12" joint="B:FRJ12" class="dkitty" ctrlrange="-1.57 1.57"/>
+    <position name="B:FLJ20" joint="B:FLJ20" class="dkitty" ctrlrange="-0.279 3.419"/>
+    <position name="B:FLJ21" joint="B:FLJ21" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="B:FLJ22" joint="B:FLJ22" class="dkitty" ctrlrange="-1.57 1.57"/>
+    <position name="B:BLJ30" joint="B:BLJ30" class="dkitty" ctrlrange="-0.279 3.419"/>
+    <position name="B:BLJ31" joint="B:BLJ31" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="B:BLJ32" joint="B:BLJ32" class="dkitty" ctrlrange="-1.57 1.57"/>
+    <position name="B:BRJ40" joint="B:BRJ40" class="dkitty" ctrlrange="-3.419 0.279"/>
+    <position name="B:BRJ41" joint="B:BRJ41" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="B:BRJ42" joint="B:BRJ42" class="dkitty" ctrlrange="-1.57 1.57"/>
+  </actuator>
+  <sensor>
+    <jointpos name="B:FRJ10_pos_sensor" joint="B:FRJ10"/>
+    <jointpos name="B:FRJ11_pos_sensor" joint="B:FRJ11"/>
+    <jointpos name="B:FRJ12_pos_sensor" joint="B:FRJ12"/>
+    <jointpos name="B:FLJ20_pos_sensor" joint="B:FLJ20"/>
+    <jointpos name="B:FLJ21_pos_sensor" joint="B:FLJ21"/>
+    <jointpos name="B:FLJ22_pos_sensor" joint="B:FLJ22"/>
+    <jointpos name="B:BLJ30_pos_sensor" joint="B:BLJ30"/>
+    <jointpos name="B:BLJ31_pos_sensor" joint="B:BLJ31"/>
+    <jointpos name="B:BLJ32_pos_sensor" joint="B:BLJ32"/>
+    <jointpos name="B:BRJ40_pos_sensor" joint="B:BRJ40"/>
+    <jointpos name="B:BRJ41_pos_sensor" joint="B:BRJ41"/>
+    <jointpos name="B:BRJ42_pos_sensor" joint="B:BRJ42"/>
+    <jointvel name="B:FRJ10_velocity_sensor" joint="B:FRJ10"/>
+    <jointvel name="B:FRJ11_velocity_sensor" joint="B:FRJ11"/>
+    <jointvel name="B:FRJ12_velocity_sensor" joint="B:FRJ12"/>
+    <jointvel name="B:FLJ20_velocity_sensor" joint="B:FLJ20"/>
+    <jointvel name="B:FLJ21_velocity_sensor" joint="B:FLJ21"/>
+    <jointvel name="B:FLJ22_velocity_sensor" joint="B:FLJ22"/>
+    <jointvel name="B:BLJ30_velocity_sensor" joint="B:BLJ30"/>
+    <jointvel name="B:BLJ31_velocity_sensor" joint="B:BLJ31"/>
+    <jointvel name="B:BLJ32_velocity_sensor" joint="B:BLJ32"/>
+    <jointvel name="B:BRJ40_velocity_sensor" joint="B:BRJ40"/>
+    <jointvel name="B:BRJ41_velocity_sensor" joint="B:BRJ41"/>
+    <jointvel name="B:BRJ42_velocity_sensor" joint="B:BRJ42"/>
+  </sensor>
+</mujocoinclude>

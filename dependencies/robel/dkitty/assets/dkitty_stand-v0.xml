@@ -1,0 +1,42 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujoco model="dkitty-v2.1">
+  <compiler meshdir="./../../robel-scenes/dkitty" texturedir="../../robel-scenes/dkitty"/>
+  <include file="./../../robel-scenes/scenes/basic_scene.xml"/>
+  <include file="./../../robel-scenes/dkitty/assets/dependenciesA_xh-v2.1.xml"/>
+  <size njmax="2000" nconmax="2000"/>
+  <asset>
+    <hfield name="hf1" size="4.5 4.5 1 .1" nrow="120" ncol="120"/>
+  </asset>
+  <worldbody>
+    <geom name="hfield1" type="hfield" hfield="hf1" pos="0 0 -.005" material="MatPlane" rgba=".7 .7 .7 1"/>
+    <body name="kitty_frame" pos="0 0 .3">
+      <camera name="trackingZ" pos="0 0 3" zaxis="0 0 3" mode="trackcom"/>
+      <camera name="trackingY" pos="1.5 1.5 .35" xyaxes="-.7 1 0 0 -.3 1" mode="trackcom"/>
+      <site name="torso" type="box" size=".090 .150 .007" group="4"/>
+      <geom type="sphere" size="0.010" mass="0.010" group="4"/>
+      <joint name="Tx" pos="0 0 0" axis="1 0 0" limited="true" type="slide" range="-10 10"/>
+      <joint name="Ty" pos="0 0 0" axis="0 1 0" limited="true" type="slide" range="-10 10"/>
+      <joint name="Tz" pos="0 0 0" axis="0 0 1" limited="true" type="slide" range="-2 2"/>
+      <joint name="Rx" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14"/>
+      <joint name="Ry" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14 3.14"/>
+      <joint name="Rz" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14"/>
+      <include file="./../../robel-scenes/dkitty/assets/chainA_xh-v2.1.xml"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,1207 @@
+common: 
+  lr: 0.001
+  batch_size: 100
+  eval_episodes: 5
+  eval_freq: 50
+  expert_network: 256,256
+  num_demos: 0
+  max_timesteps: 1000000
+  max_path_length: 150 
+  usd_name: mugandbenchv2
+  usd_path: /data/pulkitag/misc/marcel/digital-twin/policy_learning/assets/objects/
+  euler_rot: True
+  seed: 0
+  datafolder: /scratch/marcel/data/online_distill/
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  pcd_encoder_type: "dense_conv" #"resnet"
+  pool: "avg"
+  distractor_paths: []
+  model_from_disk: False
+  use_synthetic_pcd: False
+  presample_arm_pcd: False
+  sample_action: False
+  random_augmentation: True
+  wandb_dir: /data/scratch-oc40/pulkitag/marcel/
+  presample_arm_pcd: True
+  unet3d: 
+    num_levels: 3
+    f_maps: 32
+    in_channels: 32
+    out_channels: 64 #32,
+    plane_resolution: 128
+  max_grad_norm: 5.0
+  pcd_normalization: [0.35, 0.0, 0.4]
+  pcd_scene_scale: 1.0
+  plane_type: "grid" # grid_and_planes; planes 
+  decimation: 20
+  gpu_total_aggregate_pairs_capacity: 1048576 # 1024*1024
+  ppo_batch_size: 31257
+  ppo_epochs: 10
+  gripper_force: 100
+  max_videos: 1
+  crop_min : [-0.3, -0.6, 0.02]
+  crop_max : [0.9, 0.6, 1]
+  cam_idx: 2
+  add_synthetic_distractors: False
+  one_object: False
+  pretrain_steps: 0
+  floor_height: -0.5
+  dense_reward: False
+
+
+real_franka_params:
+  total_loop_time :  0.75
+  interp_steps: 100    
+  start_interp_offset : 10
+  nb_open: 7
+  gripper_force: 80
+
+toynbowl:
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  # sensors: ["pointcloud", "rgb"]
+  sensors: ["distance_to_image_plane"]
+  # sensors_train: ["distance_to_image_plane"]
+  # sensors: ["rgb", "pointcloud"]
+  max_path_length: 110
+  env_type: "toynbowl"
+  usd_name: toynbowl.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  camera_rot: [[0.8235880575406567, 0.3403315789823766, -0.17190185740958802, -0.4199129424570097]]
+  camera_pos: [[-0.014154496328833584,-0.5024633728148657,0.6852607985477838]]
+  mesh_names: ["Object_263","Object_269", "Object_272"] # scene, bowl, toy
+  foldermeshname: "toynbowlmesh"
+  pcd_normalization: [0,0,0]
+  pcd_scene_scale: 0.5
+  crop_min : [-1,-1,-1]
+  crop_max : [1,1,1]
+  cam_idx: 1
+  floor_height: -2
+
+toycarnbowl:
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  # sensors: ["pointcloud", "rgb"]
+  sensors: ["distance_to_image_plane"]
+  # sensors_train: ["distance_to_image_plane"]
+  # sensors: ["rgb", "pointcloud"]
+  max_path_length: 110
+  env_type: "toycarnbowl"
+  usd_name: toycarnbowl.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  camera_rot: [[0.8235880575406567, 0.3403315789823766, -0.17190185740958802, -0.4199129424570097]]
+  camera_pos: [[-0.014154496328833584,-0.5024633728148657,0.6852607985477838]]
+  mesh_names: ["Object_263","Object_269", "Object_272"] # scene, bowl, toy
+  foldermeshname: "toycarnbowlmesh"
+  pcd_normalization: [0,0,0]
+  pcd_scene_scale: 0.5
+  crop_min : [-1,-1,-1]
+  crop_max : [1,1,1]
+  cam_idx: 1
+  floor_height: -2
+  gpu_total_aggregate_pairs_capacity: 67108864 # 1024*1024
+
+toycarnbowl_low_randomness:
+  orientation_min_bound : [[0, 0, -2]] #-0.52 
+  orientation_max_bound : [ [0, 0, 2]] #0.52  
+  randomize_object_name : [["Object_263", "Object_269", "Object_272"]] #  scene, bowl, toy
+  position_min_bound : [[[-0.1, 0.1, 0.05], [-0.2,-0.2,0], [-0.2,-0.2,0]]]  # position (x,y,z) 
+  position_max_bound : [[[-0.1, 0.1, 0.05], [0.2,0.2,0], [0.2,0.2,0]]]  # position (x,y,z)
+
+toycarnbowl_very_low_randomness:
+  orientation_min_bound : [[0, 0, 0]] #-0.52 
+  orientation_max_bound : [ [0, 0, 0]] #0.52  
+  randomize_object_name : [["Object_263", "Object_269", "Object_272"]] #  scene, bowl, toy
+  position_min_bound : [[[-0.1, 0.1, 0.05], [-0.07,-0.07,0], [-0.07,-0.07,0]]]  # position (x,y,z) 
+  position_max_bound : [[[-0.1, 0.1, 0.05], [0.07,0.07,0], [0.07,0.07,0]]]  # position (x,y,z)
+
+toycarnbowl_randomness:
+  orientation_min_bound : [[0, 0, -2]] #-0.52 
+  orientation_max_bound : [ [0, 0, 2]] #0.52  
+  randomize_object_name : [["Object_263", "Object_269", "Object_272"]] #  scene, bowl, toy
+  position_min_bound : [[[-0.25, -0.1, -0.05], [-0.2,-0.2,0], [-0.2,-0.2,0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.05, 0.3, 0.15], [0.2,0.2,0], [0.2,0.2,0]]]  # position (x,y,z)
+
+
+toynbowl_randomness:
+  orientation_min_bound : [[0, 0, -2]] #-0.52 
+  orientation_max_bound : [ [0, 0, 2]] #0.52  
+  randomize_object_name : [["Object_263", "Object_269", "Object_272"]] #  scene, bowl, toy
+  position_min_bound : [[[-0.25, -0.1, -0.05], [-0.2,-0.2,0], [-0.2,-0.2,0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.15, 0.3, 0.15], [0.2,0.2,0], [0.2,0.2,0]]]  # position (x,y,z)
+
+
+cupntrash_randomness:
+  orientation_min_bound : [[0, 0]] #-0.52 
+  orientation_max_bound : [ [0, 0]] #0.52  
+  randomize_object_name : [["Object_263", "Object_266"]] #  scene, cup
+  position_min_bound : [[[-0.2, -0.3, -0.2], [-0.2,-0.12,0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.2, 0.1, 0.2], [0.2,0.2,0]]]  # position (x,y,z)
+
+cupntrash_mid_randomness:
+  orientation_min_bound : [[0, 0]] #-0.52 
+  orientation_max_bound : [ [0, 0]] #0.52  
+  randomize_object_name : [["Object_263", "Object_266"]] #  scene, cup
+  position_min_bound : [[[-0.15, -0.25, -0.1], [-0.2,-0.12,0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.15, 0.05, 0.1], [0.2,0.2,0]]]  # position (x,y,z)
+
+  
+ppo_vision:
+  num_points: 5300
+  ppo_batch_size: 16
+  
+
+real_franka_params:
+  total_loop_time :  0.75
+  interp_steps: 100    
+  start_interp_offset : 10
+  nb_open: 7
+  gripper_force: 80
+
+teleop_params:
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0.0,0]
+  img_height: 1024
+  img_width: 1024
+  num_cameras: 4
+  render_images: True
+  num_envs: 1
+  sensors: ["rgb", "pointcloud", "distance_to_image_plane"]
+
+
+isaac-env:
+  epsilon_greedy_rollout: 0.25
+  max_timesteps: 10000000 
+  max_path_length: 35 
+  stopped_thresh: 0.05
+  start_frontier: 40
+  frontier_expansion_rate: 5
+  frontier_expansion_freq: 10 
+  select_goal_from_last_k_trajectories: 10 
+  label_from_last_k_steps: 50 
+  label_from_last_k_trajectories: 50 
+  repeat_previous_action_prob: 0.2
+  continuous_action_space: False
+  usd_name: kitchenv3open.usd
+  pretrain_policy: False
+  pretrain_goal_selector: False 
+  demo_epochs: 0
+  num_demos: 0
+  eval_freq: 50
+  display_trajectories_freq: 1
+  explore_length: 10
+  explore_episodes: 5
+  img_width: 512
+  img_height: 512
+  randomize_pos: True
+  randomize_rot: True
+
+isaac-env-demos:
+  max_timesteps: 10000000 
+  max_path_length: 35 
+  stopped_thresh: 0.1 # TODO
+  start_frontier: 40
+  frontier_expansion_rate: 5
+  frontier_expansion_freq: 10 
+  select_goal_from_last_k_trajectories: 10 
+  label_from_last_k_steps: 50 
+  label_from_last_k_trajectories: 50 
+  repeat_previous_action_prob: 0.2
+  continuous_action_space: False
+  usd_name: kitchenv3open.usd
+  pretrain_policy: True
+  pretrain_goal_selector: True 
+  num_demos_goal_selector: 1000
+  demo_epochs: 10000
+  num_demos: 5
+  eval_freq: 10
+  eval_episodes: 5
+  display_trajectories_freq: 1
+  explore_length: 10
+  explore_episodes: 0
+  img_width: 512
+  img_height: 512
+  num_demos_goal_selector: 50
+  randomize_pos: True
+  randomize_rot: True
+
+teacher_student_distillation:
+  # sensors: ["rgb", "pointcloud"]
+  sensors: ["rgb","pointcloud"]
+  img_width: 512
+  img_height: 512
+  fourier: False
+  rgb_feats : False
+  mixed_precision : False
+  log_interval : 10
+  pad_points : False
+  num_points : 6000
+  downsample : True
+  act_dim : 14
+  folder_name: demos/isaac-env/kitchenv3close.usd_04_09_2023_10:15:47
+  randomize_pos: True
+  randomize_rot: True
+  network_layers: 256,256
+  camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  camera_target_rand: [0.1,0.1,0.1]
+  camera_target: [0.2,0,0] 
+  continuous_action_space: False
+  num_envs: 7
+  num_cameras: 1
+  max_path_length: 25
+  random_augmentation: False
+  std_noise: False
+  arm_num_points: 10000
+  add_arm_pointcloud: True
+  num_points_internal: 10000
+  dropout: 0
+  policy_train_steps: 2000000
+  num_cameras: 1
+  render_images: True
+  sampling_expert: 1
+  lr: 0.0003
+  pool: max
+  pcd_encoder: dense_conv
+  policy_bc_epochs: 1
+  layers: [256,256]
+  policy_batch_size: 64
+  eval_freq: 10
+  use_state: True
+  teacher_from_state: True
+  voxel_size: 0.01
+  num_trajs_per_step: 1
+  num_trajs_eval: 20
+  max_demos: 20000
+
+cupntrash:
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  # sensors: ["pointcloud", "rgb"]
+  sensors: ["distance_to_image_plane"]
+  # sensors_train: ["distance_to_image_plane"]
+  # sensors: ["rgb", "pointcloud"]
+  max_path_length: 90
+  env_type: "cupntrash"
+  usd_name: cupntrash.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  camera_rot: [[0.8235880575406567, 0.3403315789823766, -0.17190185740958802, -0.4199129424570097]]
+  camera_pos: [[-0.014154496328833584,-0.5024633728148657,0.6852607985477838]]
+  mesh_names: ["Object_263", "Object_266"] # scene, cup
+  foldermeshname: "cupntrashmesh"
+  pcd_normalization: [0,0,0]
+  pcd_scene_scale: 0.5
+  crop_min : [-1,-1,-1]
+  crop_max : [1,1,1]
+  cam_idx: 1
+  
+
+state_teacher_student_distillation:
+  policy_train_steps: 2000000
+  img_width: 512
+  img_height: 512
+  fourier: False
+  rgb_feats : False
+  mixed_precision : False
+  log_interval : 10
+  pad_points : False
+  num_points : 6000
+  downsample : True
+  act_dim : 14
+  folder_name: demos/isaac-env/kitchenv3close.usd_04_09_2023_10:15:47
+  randomize_pos: True
+  randomize_rot: True
+  network_layers: 256,256
+  camera_pos: [[0.94,-0.63,0.94],[0.29774,-1.65697,0.73069],[0.4868,1.92378,0.68305],[0.35839,0.21813,2.80389]]
+  #camera_rot: [[-0.57102,-0.35844,0.39266,0.62552],[0.76995,0.63741,-0.019,-0.02294],[-0.02434,-0.02242,0.67721,0.73504],[0.70858,0.0198,-0.01971,-0.70507]]
+  camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  camera_target_rand: [0.1,0.1,0.1]
+  camera_target: [0.2,0,0] 
+  continuous_action_space: False
+  num_envs: 100
+  num_cameras: 0
+  random_augmentation: False
+  std_noise: False
+  render_images: False
+  sampling_expert: 1
+  policy_batch_size: 1024
+  eval_freq: 10
+  use_state: True
+  teacher_from_state: True
+  num_trajs_per_step: 5
+  num_trajs_eval: 20
+  policy_bc_epochs: 1
+
+wooden_drawer_final:
+  max_path_length: 50
+  env_type: "drawer_new"
+  camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  randomize_action_mag: [0.02, 0.02, 0.02, 0.05, 0.05, 0.05]
+  usd_name: drawer_wooden_final.usd
+  camera_pos: [[0.99,-0.61,0.63]]
+  camera_pos_rand: [0.2,0.2,0.2] #[0.1,0.76,0.18]
+  camera_target_rand: [0.1,0.1,0.1]
+  camera_target: [0.2,0,0] 
+
+wooden_drawer_final2:
+  max_path_length: 60
+  env_type: "drawer_new"
+  # camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  randomize_action_mag: [0,0,0,0,0,0]
+  usd_name: drawer_wooden_final.usd
+  camera_pos: [[0.99,-0.61,0.63]]
+  camera_pos_rand: [0, 0, 0] #[0.1,0.76,0.18]
+  camera_target_rand: [0, 0, 0]
+  camera_target: [0.2,0,0] 
+  img_width: 240
+  img_height: 320
+  num_cameras: 1
+  arm_num_points: 10000
+  add_arm_pointcloud: True
+  num_points_internal: 10000
+  sensors: ["distance_to_image_plane"]
+
+wooden_drawer_final_small:
+  max_path_length: 60
+  env_type: "drawer_new"
+  # camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  randomize_action_mag: [0,0,0,0,0,0]
+  usd_name: drawersmall.usd
+  camera_pos: [[0.99,-0.61,0.63]]
+  camera_pos_rand: [0, 0, 0] #[0.1,0.76,0.18]
+  camera_target_rand: [0, 0, 0]
+  camera_target: [0.2,0,0] 
+  img_width: 240
+  img_height: 320
+  num_cameras: 1
+  arm_num_points: 10000
+  add_arm_pointcloud: True
+  num_points_internal: 10000
+  sensors: ["distance_to_image_plane"]
+
+wooden_drawer_finalbigger2:
+  max_path_length: 60
+  env_type: "drawer_new"
+  # camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  randomize_action_mag: [0,0,0,0,0,0]
+  usd_name: drawertest2.usd
+  camera_pos: [[0.99,-0.61,0.63]]
+  camera_pos_rand: [0, 0, 0] #[0.1,0.76,0.18]
+  camera_target_rand: [0, 0, 0]
+  camera_target: [0.2,0,0] 
+  img_width: 240
+  img_height: 320
+  num_cameras: 1
+  arm_num_points: 10000
+  add_arm_pointcloud: True
+  num_points_internal: 10000
+  sensors: ["distance_to_image_plane"]
+
+wooden_drawer_simplified:
+  max_path_length: 60
+  env_type: "drawer_new"
+  # camera_pos_rand: [0.1,0.1,0.1] #[0.1,0.76,0.18]
+  randomize_action_mag: [0,0,0,0,0,0]
+  usd_name: wooden_drawer_final_simplified.usd
+  camera_pos: [[0.99,-0.61,0.63]]
+  camera_pos_rand: [0, 0, 0] #[0.1,0.76,0.18]
+  camera_target_rand: [0, 0, 0]
+  camera_target: [0.2,0,0] 
+  img_width: 240
+  img_height: 320
+  num_cameras: 1
+  arm_num_points: 10000
+  add_arm_pointcloud: True
+  num_points_internal: 10000
+  sensors: ["distance_to_image_plane"]
+
+wooden_drawer_bigger:
+  env_name: isaac-env
+  max_path_length: 60
+  env_type: "drawer_bigger"
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  usd_name: drawerbiggerhandle.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  camera_target: [0.2,0,0] 
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  # sensors: ["pointcloud", "rgb"]
+  sensors: ["distance_to_image_plane"]
+  foldermeshname: "drawerbiggermesh"
+  mesh_names: ["Object_266", "Object_268"]
+  # sensors_train: ["distance_to_image_plane"]
+  # sensors: ["rgb", "pointcloud"]
+
+
+
+
+dishnrack:
+  max_path_length: 150
+  env_type: "dishnrack"
+  usd_name: white_dishrack_objaverse_plate.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_278", "Object_270", "Object_287"]
+  foldermeshname: "dishnrackmesh"
+
+
+dishnrackv2:
+  max_path_length: 150
+  env_type: "dishnrack"
+  usd_name: dishinrackv4.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_278", "Object_270", "Object_287"]
+  foldermeshname: "dishnrackmeshv2"
+
+dishsinklabnonorm:
+  n_steps: 110
+  env_type: "dishsinklab"
+  usd_name: dishsinklab.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.8235880575406567, 0.3403315789823766, -0.17190185740958802, -0.4199129424570097]]
+  camera_pos: [[-0.014154496328833584,-0.5024633728148657,0.6852607985477838]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_263", "Object_278", "Object_270"]
+  foldermeshname: "dishsinklabmeshv2"
+  floor_height: -2
+  
+dishsinklab:
+  max_path_length: 110
+  n_steps: 110
+  env_type: "dishsinklab"
+  usd_name: dishsinklab.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.8235880575406567, 0.3403315789823766, -0.17190185740958802, -0.4199129424570097]]
+  camera_pos: [[-0.014154496328833584,-0.5024633728148657,0.6852607985477838]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_263", "Object_278", "Object_270"]
+  foldermeshname: "dishsinklabmeshv2"
+  floor_height: -2
+  pcd_normalization: [0,0,0]
+  pcd_scene_scale: 0.625
+  crop_min : [-0.8,-0.8,-0.8]
+  crop_max : [0.8,0.8,0.8]
+  cam_idx: 1
+  
+dishsinklab_randomness:
+  orientation_min_bound : [[0, -0.3, 0]] #-0.52 
+  orientation_max_bound : [ [0, 0.3, 0]] #0.52  
+  randomize_object_name : [["Object_263", "Object_278", "Object_270"]] #  scene, dishrack, plate
+  position_min_bound : [[[-0.25, -0.1, -0.1], [-0.1,0.05,0], [-0.2,0,0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.1, 0.2, 0.1], [0.1,0.15,0], [0,0,0]]]  # position (x,y,z)
+
+dishsinklab_low_randomness:
+  orientation_min_bound : [[0, -0.3, 0]] #-0.52 
+  orientation_max_bound : [ [0, 0.3, 0]] #0.52  
+  randomize_object_name : [["Object_263", "Object_278", "Object_270"]] #  scene, dishrack, plate
+  position_min_bound : [[[-0.0725, 0.05, 0], [-0.1,0.05,0], [-0.2,0,0]]]  # position (x,y,z) 
+  position_max_bound : [[[-0.0725, 0.05, 0], [0.1,0.15,0], [0,0,0]]]  # position (x,y,z)
+
+dishsinklab_mid_randomness:
+  orientation_min_bound : [[0, -0.3, 0]] #-0.52 
+  orientation_max_bound : [ [0, 0.3, 0]] #0.52  
+  randomize_object_name : [["Object_263", "Object_278", "Object_270"]] #  scene, dishrack, plate
+  position_min_bound : [[[-0.1, 0, -0.05], [-0.1,0.05,0], [-0.2,0,0]]]  # position (x,y,z) 
+  position_max_bound : [[[0, 0.1, 0.05], [0.1,0.15,0], [0,0,0]]]  # position (x,y,z)
+
+
+dishnrack_mid_randomness:
+  position_min_bound : [[[-0.4, -0.035, 0]], [[-0.4, -0.035, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0, 0.25, 0]], [[0., 0.25, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.1], [0]] #-0.52 
+  orientation_max_bound : [ [0.1], [0]] #0.52  
+  randomize_object_name : [["Object_278"], ["Object_270", "Object_287"]] #  rack ; (plate, box)
+
+
+dishnrack_high_randomness:
+  position_min_bound : [[[-0.4, -0.035, 0]], [[-0.4, -0.035, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0, 0.25, 0]], [[0., 0.25, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52], [0]] #-0.52 
+  orientation_max_bound : [ [0.52],[ 0]] #0.52  
+  randomize_object_name : [["Object_278"], ["Object_270", "Object_287"]] #  rack ; (plate, box)
+
+
+booknshelve:
+  max_path_length: 110
+  env_type: "booknshelve"
+  usd_name: booknshelve.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  total_objects: 6
+  object_idxs: [1,2,3]
+  mesh_names: ["Object_268", "Object_272", "Object_277"]
+  foldermeshname: "booknshelvemesh"
+
+
+
+kitchentoaster:
+  max_path_length: 110
+  env_type: "kitchentoaster"
+  usd_name: kitchentoaster3.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.8247277703634452,0.33999921029948027,-0.19855538249061805,-0.4059561575725569]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[-0.00831402031544193,-0.37367157218965213,0.6853374666303969]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_267", "Object_270" , "Object_282"]
+  foldermeshname: "kitchentoastermesh"
+  pcd_normalization: [0,0,0]
+  pcd_scene_scale: 0.625
+  crop_min : [-0.8,-0.8,-0.8]
+  crop_max : [0.8,0.8,0.8]
+  cam_idx: 1
+  
+
+toaster:
+  max_path_length: 110
+  env_type: "kitchentoaster"
+  usd_name: onlytoaster.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7827027004326129, 0.3556666038579866, 0.2135058709, 0.4639967]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.949481758014562,-0.40073660319996435,0.6836547497312322]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_267", "Object_270"]
+  foldermeshname: "onlytoaster"
+
+cabinet:
+  max_path_length: 110
+  env_type: "cabinet"
+  usd_name: cabinet.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_268", "Object_266" , "Object_271"]
+  foldermeshname: "cabinetmesh"
+
+mugupright:
+  max_path_length: 110
+  env_type: "mugupright"
+  usd_name: mugupright.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_262"]
+  foldermeshname: "muguprightmesh"
+
+mugandshelf:
+  max_path_length: 100
+  decimation: 30
+  env_type: "mugandshelf"
+  usd_name: mugandshelf2.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_263", "Object_267"]
+  foldermeshname: "mugandshelfmesh"
+
+booknshelve2:
+  usd_name: booknshelve2.usd
+
+
+kitchentoaster_randomness:
+  position_min_bound : [[[0.3, -0.2, -0.2]]]  # position (x,y,z) 
+  position_max_bound : [[[0.7, 0.1, 0.2]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.1]] #-0.52 
+  orientation_max_bound : [ [0.1]] #0.52  
+  randomize_object_name : [["Object_267"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+toaster_randomness:
+  position_min_bound : [[[0.3, -0.2, -0.2]]]  # position (x,y,z) 
+  position_max_bound : [[[0.7, 0.2, 0.2]]]  # position (x,y,z)
+  orientation_min_bound : [[-1]] #-0.52 
+  orientation_max_bound : [ [1]] #0.52  
+  randomize_object_name : [["Object_267"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+
+
+booknshelve_debug_low_randomness:
+  position_min_bound : [[[-0.05, 0.08, 0]], [[0.05, 0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[-0.05, 0.08, 0]], [[0.05, 0.05, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0], [0]] #-0.52 
+  orientation_max_bound : [ [0], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+booknshelve_debug_mid_randomness:
+  position_min_bound : [[[-0.15, -0.02, 0]], [[-0.05, -0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.05, 0.18, 0]], [[0.15, 0.15, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0], [0]] #-0.52 
+  orientation_max_bound : [ [0], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+booknshelve_debug_high_randomness:
+  position_min_bound : [[[-0.25, -0.12, 0]], [[-0.15, -0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.15, 0.28, 0]], [[0.15, 0.15, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0], [0]] #-0.52 
+  orientation_max_bound : [ [0], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+
+booknshelve_debug_high_rot_randomness:
+  position_min_bound : [[[-0.25, -0.12, 0]], [[-0.15, -0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.15, 0.28, 0]], [[0.15, 0.15, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52], [0]] #-0.52 
+  orientation_max_bound : [ [0.52], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+booknshelve2_debug_low_randomness:
+  position_min_bound : [[[-0.1, 0., 0]], [[0.04, -0.18, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[-0.1, 0., 0]], [[0.04, -0.18, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0], [0]] #-0.52 
+  orientation_max_bound : [ [0], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+mugandshelf_low_randomness:
+  position_min_bound : [[[0, 0., 0]], [[0.1, 0, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0, 0., 0]], [[0.1, 0, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0], [0]] #-0.52 
+  orientation_max_bound : [[ 0], [0]] #0.52  
+  randomize_object_name : [["Object_267"], ["Object_263"]] #  shelve ; mug # site shelve 280 site book 279
+
+mugandshelf_mid_randomness:
+  position_min_bound : [[[-0.3, 0., 0]], [[-0.1, -0.25, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.25, 0.3, 0]], [[0.4, 0.4, 0]]]  # position (x,y,z)
+  orientation_min_bound : [0, 0] #-0.52 
+  orientation_max_bound : [ 0, 0] #0.52  
+  randomize_object_name : [["Object_267"], ["Object_263"]] #  shelve ; mug # site shelve 280 site book 279
+
+mugandshelf_mid_rot_randomness:
+  position_min_bound : [[[-0.3, 0., 0]], [[-0.1, -0.25, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.25, 0.3, 0]], [[0.4, 0.4, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52], [-1.54]] #-0.52 
+  orientation_max_bound : [ [0.52], [1.54]] #0.52  
+  randomize_object_name : [["Object_267"], ["Object_263"]] #  shelve ; mug # site shelve 280 site book 279
+  
+mugandshelf_high_rot_randomness:
+  position_min_bound : [[[-0.3, 0., 0]], [[-0.1, -0.25, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.25, 0.3, 0.07]], [[0.4, 0.4, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52], [-0.54]] #-0.52 
+  orientation_max_bound : [ [0.52], [0.54]] #0.52  
+  randomize_object_name : [["Object_267"], ["Object_263"]] #  shelve ; mug # site shelve 280 site book 279
+  
+
+
+cabinet_mid_randomness:
+  position_min_bound : [[[-0.5, -0.1, 0.1]]]  # position (x,y,z) 
+  position_max_bound : [[[0, 0.3, -0.01]]]  # position (x,y,z)
+  orientation_min_bound : [[0]] #-0.52 
+  orientation_max_bound : [ [0]] #0.52  
+  randomize_object_name : [["Object_268"]] #  shelve ; mug # site shelve 280 site book 279
+
+
+cabinet_mid_rot_randomness:
+  position_min_bound : [[[-0.5, -0.1, 0.1]]]  # position (x,y,z) 
+  position_max_bound : [[[0, 0.3, -0.01]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52]] #-0.52 
+  orientation_max_bound : [[ 0.52]] #0.52  
+  randomize_object_name : [["Object_268"]] #  shelve ; mug # site shelve 280 site book 279
+
+booknshelve_low_randomness:
+  position_min_bound : [[[-0.1, 0.10, 0]], [[0.1, 0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0., 0.15, 0]], [[0.15, 0.15, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0], [0]] #-0.52 
+  orientation_max_bound : [ [0], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+booknshelve_mid_randomness:
+  position_min_bound : [[[-0.2, 0.0, 0]], [[0.05, 0.0, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.1, 0.25, 0]], [[0.2, 0.2, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.1], [-0.1]] #-0.52 
+  orientation_max_bound : [ [0.1], [0.1]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+booknshelve_high_randomness:
+  position_min_bound : [[[-0.25, -0.05, 0]], [[0.0, -0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.15, 0.3, 0]], [[0.25, 0.25, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52], [0]] #-0.52 
+  orientation_max_bound : [ [0.52], [0]] #0.52  
+  randomize_object_name : [["Object_277"], ["Object_268", "Object_272"]] #  shelve ; (book, box) # site shelve 280 site book 279
+
+mugnrack:
+  max_path_length: 110
+  env_type: "mugnrack"
+  usd_name: mugnrack.usd
+  usd_path: /data/pulkitag/misc/marcel/USDAssets/scenes
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+  sensors: ["distance_to_image_plane"]
+  mesh_names: ["Object_262", "Object_266"]
+  foldermeshname: "mugnrackmesh"
+
+mugnrack_low_randomness:
+  position_min_bound : [[[0, 0.10, 0]], [[0.1, 0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.1, 0.15, 0]], [[0.15, 0.15, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[0],[ 0]] #-0.52 
+  orientation_max_bound : [ [0], [0]] #0.52  
+  randomize_object_name : [["Object_266"], ["Object_262"]] #  rack ; mug
+
+mugnrack_mid_randomness:
+  position_min_bound : [[[-0.1, 0.0, 0]], [[0., -0.05, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.2, 0.25, 0]], [[0.25, 0.25, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.2], [-0.2]] #-0.52 
+  orientation_max_bound : [ [0.2], [0.2]] #0.52  
+  randomize_object_name : [["Object_266"], ["Object_262"]] #  rack ; mug
+
+mugnrack_high_randomness:
+  position_min_bound : [[[-0.15, -0.05, 0]], [[-0.05, -0.1, 0]]]  # position (x,y,z) 
+  position_max_bound : [[[0.25, 0.3, 0]], [[0.3, 0.3, 0]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.52], [-0.52]] #-0.52 
+  orientation_max_bound : [ [0.52],[ 0.52]] #0.52  
+  randomize_object_name : [["Object_266"], ["Object_262"]] #  rack ; mug
+
+rnn:
+  policy_batch_size: 2
+  hidden_size: 256
+
+drawer_high_randomness:
+  position_min_bound : [[[-0.4, -0.1, -0.1]]]  # position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.2, 0.3, 0.1]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.32]] #-0.52 
+  orientation_max_bound : [[0.32]] #0.52  
+  randomize_object_name : [["Object_268"]]
+
+drawer_mid_randomness:
+  position_min_bound : [[[-0.3, -0.0, -0.1]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.2, 0.25, 0.1]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[-0.6]] # 
+  orientation_max_bound : [[0.6]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_randomness:
+  # position_min_bound : [[0.07,-0.03,0]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  # position_max_bound : [[0.07,-0.03,0]]  # 0.2, 0.25, 0.05position (x,y,z)
+  position_min_bound : [[[-0.06,0.07,0]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[-0.06,0.07,0]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[0]] # 
+  orientation_max_bound : [[0]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_more_randomness:
+  # position_min_bound : [[0.07,-0.03,0]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  # position_max_bound : [[0.07,-0.03,0]]  # 0.2, 0.25, 0.05position (x,y,z)
+  position_min_bound : [[[-0.16,-0.07,0]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.06,0.17,0]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[0.1]] # 
+  orientation_max_bound : [[0.1]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_low_randomness:
+  position_min_bound : [[[0,0,0]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0,0,0]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[0]] # 
+  orientation_max_bound : [[0]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_little_randomness:
+  position_min_bound : [[[-0.06,-0.05,-0.05]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0,0.05,0.0]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[0]] # 
+  orientation_max_bound : [[0]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_mid_randomness:
+  position_min_bound : [[[-0.16,-0.1,-0.05]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.06,0.17,0.0]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[-0.1]] # 
+  orientation_max_bound : [[0.1]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_high_prev_randomness:
+  position_min_bound : [[[-0.26,-0.07,0]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.16,0.27,0.05]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[-0.5]] # 
+  orientation_max_bound : [[0.5]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_high_randomness:
+  position_min_bound : [[[-0.26,-0.07,-0.05]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.16,0.27,0.0]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[-0.5]] # 
+  orientation_max_bound : [[0.5]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_debug_extra_randomness:
+  position_min_bound : [[[-0.26,-0.07,-0.05]]]  # -0.3, -0.1, -0.05 position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.16,0.27,0.05]]]  # 0.2, 0.25, 0.05position (x,y,z)
+  orientation_min_bound : [[-0.5]] # 
+  orientation_max_bound : [[0.5]] #  
+  randomize_object_name : [["Object_268"]]
+
+drawer_low_randomness:
+  position_min_bound : [[[-0.1, -0.1, -0.1]]]  # position (x,y,z) # TODO: change to -0.15
+  position_max_bound : [[[0.1, 0.1, 0.1]]]  # position (x,y,z)
+  orientation_min_bound : [[-0.1]] #-0.52 
+  orientation_max_bound : [[0.1]] #0.52  
+  randomize_object_name : [["Object_268"]]
+
+wooden_drawer:
+  camera_pos: [[0.1,-0.63,0.43]]
+  camera_target: [0.3,0,0.2] 
+  camera_pos_rand: [0.2,0.2,0.2] #[0.1,0.76,0.18]
+  camera_target_rand: [0.1,0.2,0.2]
+  max_path_length: 50
+  env_type: "drawer_new"
+
+
+teleop:
+  # camera_pos: [[1.29,-0.13,0.3],[0.422, -0.77, 0.45],[0.4,1.15,0.51],[0.43, 0.1, 1.38]] # ex - 0 [-0.52, 0.13, 0.65]
+  camera_pos: [[0.9527,0.0,0.2323],[0.4, -0.6, 0.45],[0.4,0.6,0.45],[0.63, 0, 0.8]] # ex - 0 [-0.52, 0.13, 0.65]
+  camera_target: [0.2,0,0.2] 
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+  camera_rot: []
+
+teleop_for_pcd:
+  num_cameras: 1
+  render_images: True
+  num_envs: 1
+  sensors: ["rgb", "pointcloud", "distance_to_image_plane"]
+  add_arm_pointcloud: True
+  env_name: isaac-env
+  camera_pos_rand: [0,0,0]
+  camera_target_rand: [0,0,0]
+  camera_rot: [[0.7817506474817165,0.3661583874245533,0.1983648965534382,0.4641608862193277]]
+  randomize_action_mag: [0.01, 0.01, 0.01, 0.03, 0.03, 0.03]
+  camera_pos: [[0.9574614319494098,-0.41018981238847413,0.6868063410928846]]
+  voxel_size: 0.005
+  num_points: 6000
+  num_points_internal: 5000
+  arm_num_points: 3000
+  img_width: 480
+  img_height: 640
+  num_cameras: 1
+teleop_toynbowl:
+  # camera_pos: [[1.29,-0.13,0.3],[0.422, -0.77, 0.45],[0.4,1.15,0.51],[0.43, 0.1, 1.38]] # ex - 0 [-0.52, 0.13, 0.65]
+  camera_pos: [[1.411,-0.186,0.32789],[0.58773,-1.2834,0.46215],[0.38, 0.94, 0.615],[1.28, -0.24532,1.5825]] # ex - 0 [-0.52, 0.13, 0.65]
+  camera_target: [0.2,0,0.2] 
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+
+teleop_dishsinklab:
+  # camera_pos: [[1.29,-0.13,0.3],[0.422, -0.77, 0.45],[0.4,1.15,0.51],[0.43, 0.1, 1.38]] # ex - 0 [-0.52, 0.13, 0.65]
+  camera_pos: [[0.604, 0.038,0.764],[0.33, -0.497, 0.3468],[0.3859, 0.953672, 0.744],[-0.22,0.01, 1.02]] # ex - 0 [-0.52, 0.13, 0.65]
+  camera_target: [0.2,0,0.2] 
+  camera_pos_rand: [0,0,0] #[0.1,0.76,0.18]
+  camera_target_rand: [0,0,0]
+
+  
+low_pcd_randomness:
+  random_dropout: 1
+  random_dropout_prob_min: 0.05
+  random_dropout_prob_high: 0.1
+  random_translation: 0
+  random_translation_range: 0.04
+  random_rot: 0
+  random_rot_std: 0.1
+  random_jitter: 1
+  random_jitter_ratio: 0.1
+  random_jitter_std: 0.01
+  num_points: 10000
+  num_points_internal: 10000
+  arm_num_points: 3000
+
+default_pcd_randomness:
+  random_dropout: 1
+  random_dropout_prob_min: 0.1
+  random_dropout_prob_high: 0.3
+  random_translation: 0
+  random_translation_range: 0.04
+  random_rot: 0
+  random_rot_std: 0.1
+  random_jitter: 1
+  random_jitter_ratio: 0.3
+  random_jitter_std: 0.01
+
+high_pcd_randomness:
+  random_dropout: 1
+  random_dropout_prob_min: 0.1
+  random_dropout_prob_high: 0.3
+  random_translation: 1
+  random_translation_range: 0.1
+  random_rot: 0
+  random_rot_std: 0.1
+  random_jitter: 1
+  random_jitter_ratio: 0.8
+  random_jitter_std: 0.05
+
+imitation_learning_plusplus:
+  random_dropout: 1
+  random_dropout_prob_min: 0.1
+  random_dropout_prob_high: 0.3
+  random_translation: 1
+  random_translation_range: 0.04
+  random_rot: 1
+  random_rot_std: 0.1
+  random_jitter: 1
+  random_jitter_ratio: 0.3
+  random_jitter_std: 0.01
+  mesh_names: ["lamp_treated_fixed", "book_fixed", "helmet_fixed", "umbrella_fixed", "bottle_fixed"]
+  foldermeshname: "distractormeshes"
+  distractor_pos_min_bound : [-0.2, -0.5, 0]  # position (x,y,z) # TODO: change to -0.15
+  distractor_pos_max_bound : [1, 0.5, 0.75]  # position (x,y,z)
+  distractor_ori_min_bound : -3 #-0.52 
+  distractor_ori_max_bound : 3 #0.52  
+  add_synthetic_distractors: True
+
+imitation_learning_plusplus:
+  random_dropout: 1
+  random_dropout_prob_min: 0.1
+  random_dropout_prob_high: 0.3
+  random_translation: 1
+  random_translation_range: 0.04
+  random_rot: 1
+  random_rot_std: 0.1
+  random_jitter: 1
+  random_jitter_ratio: 0.3
+  random_jitter_std: 0.01
+  add_synthetic_distractors: False
+
+extreme_pcd_randomness:
+  random_dropout: 1
+  random_dropout_prob_min: 0.3
+  random_dropout_prob_high: 0.7
+  random_translation: 0
+  random_translation_range: 0.1
+  random_rot: 0
+  random_rot_std: 0.1
+  random_jitter: 1
+  random_jitter_ratio: 0.8
+  random_jitter_std: 0.1
+
+
+distractors:
+  distractor_paths: ["/data/pulkitag/misc/marcel/USDAssets/objects/lamp_treated.usdz", "/data/pulkitag/misc/marcel/USDAssets/objects/book.usdz", "/data/pulkitag/misc/marcel/USDAssets/objects/helmet.usdz", "/data/pulkitag/misc/marcel/USDAssets/objects/umbrella.usdz", "/data/pulkitag/misc/marcel/USDAssets/objects/bottle.usdz"]
+  distractor_pos_min_bound : [-0.2, -0.5, 0.01]  # position (x,y,z) # TODO: change to -0.15
+  distractor_pos_max_bound : [1, 0.5, 0.01]  # position (x,y,z)
+  distractor_ori_min_bound : -1 #-0.52 
+  distractor_orit_max_bound : 1 #0.52  
+
+distractors_fixed:
+  distractor_paths: ["/data/pulkitag/misc/marcel/USDAssets/objects/lamp_treated_fixed.usd", "/data/pulkitag/misc/marcel/USDAssets/objects/book_fixed.usd", "/data/pulkitag/misc/marcel/USDAssets/objects/helmet_fixed.usd", "/data/pulkitag/misc/marcel/USDAssets/objects/umbrella_fixed.usd", "/data/pulkitag/misc/marcel/USDAssets/objects/bottle_fixed.usd"]
+  distractor_pos_min_bound : [-0.2, -0.5, 0.01]  # position (x,y,z) # TODO: change to -0.15
+  distractor_pos_max_bound : [1, 0.5, 0.01]  # position (x,y,z)
+  distractor_ori_min_bound : -1 #-0.52 
+  distractor_orit_max_bound : 1 #0.52  
+
+distractors_imp10:
+  distractor_paths: ["/home/marcel/USDAssets/objects/book.usdz", "/home/marcel/USDAssets/objects/helmet.usdz", "/home/marcel/USDAssets/objects/umbrella.usdz", "/home/marcel/USDAssets/objects/bottle.usdz"]
+  distractor_pos_min_bound : [-0.2, -0.5, 0.7]  # position (x,y,z) # TODO: change to -0.15
+  distractor_pos_max_bound : [1, 0.5, 1.5]  # position (x,y,z)
+  distractor_ori_min_bound : -1 #-0.52 
+  distractor_orit_max_bound : 1 #0.52  
+
+distractors_imp10_fixed:
+  distractor_paths: ["/home/marcel/USDAssets/objects/lamp_treated_fixed.usd","/home/marcel/USDAssets/objects/book_fixed.usd", "/home/marcel/USDAssets/objects/helmet_fixed.usd", "/home/marcel/USDAssets/objects/umbrella_fixed.usd", "/home/marcel/USDAssets/objects/bottle_fixed.usd"]
+  distractor_pos_min_bound : [0.5, -1., 0.01]  # position (x,y,z) # TODO: change to -0.15
+  distractor_pos_max_bound : [1, 0.2, 0.01]  # position (x,y,z)
+  distractor_ori_min_bound : -1 #-0.52 
+  distractor_orit_max_bound : 1 #0.52  
+
+
+no_distractors:
+  distractor_paths: []
+
+
+low_action_rand:
+  randomize_action_mag: [0.01,0.01,0.01,0,0,0]
+
+no_action_rand:
+  randomize_action_mag: [0,0,0,0,0,0]
+  
+render_rgb:
+  sensors: ["pointcloud", "rgb"]
+
+synthetic_pcd:
+  sensors: ["synthetic_pcd"]
+  num_envs: 200
+
+two_cameras:
+  num_cameras: 2
+  camera_rot: [[0.7827027004326129, 0.3556666038579866, 0.2135058709, 0.4639967], [0.869, 0.40, -0.119, -0.263]]
+  camera_pos: [[0.949481758014562,-0.40073660319996435,0.6836547497312322], [0.162,-0.359,0.4]]
+
+

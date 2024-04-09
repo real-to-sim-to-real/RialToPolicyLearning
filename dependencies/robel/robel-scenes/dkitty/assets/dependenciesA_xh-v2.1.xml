@@ -1,0 +1,103 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujocoinclude>
+  <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5"/>
+  <option timestep="0.0025"/>
+  <size njmax="400" nconmax="400"/>
+  <asset>
+    <material name="metal_black" specular="1" shininess="1" rgba="0.25 0.25 0.25 1.0"/>
+    <material name="metal_grey" specular=".8" shininess=".8" rgba="0.5 0.5 0.5 1.0"/>
+    <material name="plastic" specular="0.3" shininess="0" rgba="1 1 1 1"/>
+    <material name="greenish" specular="0" shininess="0" rgba="0.3 1 0.3 1"/>
+  </asset>
+  <default>
+    <default class="dkitty">
+      <joint limited="true" damping="1" armature="0.001"/>
+      <geom contype="1" conaffinity="1" condim="4" group="1" margin="0.001" solref=".02 1" solimp=".8 .9 .01"/>
+      <position ctrlrange="-1.57 1.57" ctrllimited="true" kp="5"/>
+      <default class="viz_metal_black">
+        <geom contype="0" conaffinity="0" group="1" type="mesh" material="metal_black" mass="0"/>
+      </default>
+      <default class="viz_metal_grey">
+        <geom contype="0" conaffinity="0" group="1" type="mesh" material="metal_grey" mass="0"/>
+      </default>
+      <default class="viz_plastic">
+        <geom contype="0" conaffinity="0" group="1" type="mesh" material="plastic" mass="0"/>
+      </default>
+      <default class="collision">
+        <geom contype="1" conaffinity="1" group="4" rgba="0.3 0.3 1.0 0.5"/>
+        <site group="4"/>
+      </default>
+    </default>
+  </default>
+  <asset>
+    <mesh file="../dkitty/meshes/bulkhead.stl" name="bulkhead"/>
+    <mesh file="../dkitty/meshes/D_kitty_plates_V2.stl" name="D_kitty_plates_V2"/>
+    <mesh file="../dkitty/meshes/bulkhead_low_poly.stl" name="bulkhead_low_poly"/>
+    <mesh file="../dkitty/meshes/bulkhead_low_poly1.stl" name="bulkhead_low_poly1"/>
+    <mesh file="../dkitty/meshes/bulkhead_low_poly2.stl" name="bulkhead_low_poly2"/>
+    <mesh file="../dkitty/meshes/bulkhead_low_poly3.stl" name="bulkhead_low_poly3"/>
+    <mesh file="../dkitty/meshes/bulkhead_low_poly4.stl" name="bulkhead_low_poly4"/>
+    <mesh file="../dkitty/meshes/bulkhead_low_poly5.stl" name="bulkhead_low_poly5"/>
+    <mesh file="../dkitty/meshes/fr12_h103_3.stl" name="fr12_h103_3"/>
+    <mesh file="../dkitty/meshes/screws.stl" name="screws"/>
+    <mesh file="../dkitty/meshes/x430_dkitty_2.stl" name="x430_dkitty_2"/>
+    <mesh file="../dkitty/meshes/xh_clamping_small.stl" name="xh_clamping_small"/>
+    <mesh file="../dkitty/meshes/xh_finger_tip.stl" name="xh_finger_tip"/>
+  </asset>
+  <actuator>
+    <position name="A:FRJ10" joint="A:FRJ10" class="dkitty" ctrlrange="-3.419 0.279"/>
+    <position name="A:FRJ11" joint="A:FRJ11" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="A:FRJ12" joint="A:FRJ12" class="dkitty" ctrlrange="-1.57 1.57"/>
+    <position name="A:FLJ20" joint="A:FLJ20" class="dkitty" ctrlrange="-0.279 3.419"/>
+    <position name="A:FLJ21" joint="A:FLJ21" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="A:FLJ22" joint="A:FLJ22" class="dkitty" ctrlrange="-1.57 1.57"/>
+    <position name="A:BLJ30" joint="A:BLJ30" class="dkitty" ctrlrange="-0.279 3.419"/>
+    <position name="A:BLJ31" joint="A:BLJ31" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="A:BLJ32" joint="A:BLJ32" class="dkitty" ctrlrange="-1.57 1.57"/>
+    <position name="A:BRJ40" joint="A:BRJ40" class="dkitty" ctrlrange="-3.419 0.279"/>
+    <position name="A:BRJ41" joint="A:BRJ41" class="dkitty" ctrlrange="-2.14 2.14"/>
+    <position name="A:BRJ42" joint="A:BRJ42" class="dkitty" ctrlrange="-1.57 1.57"/>
+  </actuator>
+  <sensor>
+    <jointpos name="A:FRJ10_pos_sensor" joint="A:FRJ10"/>
+    <jointpos name="A:FRJ11_pos_sensor" joint="A:FRJ11"/>
+    <jointpos name="A:FRJ12_pos_sensor" joint="A:FRJ12"/>
+    <jointpos name="A:FLJ20_pos_sensor" joint="A:FLJ20"/>
+    <jointpos name="A:FLJ21_pos_sensor" joint="A:FLJ21"/>
+    <jointpos name="A:FLJ22_pos_sensor" joint="A:FLJ22"/>
+    <jointpos name="A:BLJ30_pos_sensor" joint="A:BLJ30"/>
+    <jointpos name="A:BLJ31_pos_sensor" joint="A:BLJ31"/>
+    <jointpos name="A:BLJ32_pos_sensor" joint="A:BLJ32"/>
+    <jointpos name="A:BRJ40_pos_sensor" joint="A:BRJ40"/>
+    <jointpos name="A:BRJ41_pos_sensor" joint="A:BRJ41"/>
+    <jointpos name="A:BRJ42_pos_sensor" joint="A:BRJ42"/>
+    <jointvel name="A:FRJ10_velocity_sensor" joint="A:FRJ10"/>
+    <jointvel name="A:FRJ11_velocity_sensor" joint="A:FRJ11"/>
+    <jointvel name="A:FRJ12_velocity_sensor" joint="A:FRJ12"/>
+    <jointvel name="A:FLJ20_velocity_sensor" joint="A:FLJ20"/>
+    <jointvel name="A:FLJ21_velocity_sensor" joint="A:FLJ21"/>
+    <jointvel name="A:FLJ22_velocity_sensor" joint="A:FLJ22"/>
+    <jointvel name="A:BLJ30_velocity_sensor" joint="A:BLJ30"/>
+    <jointvel name="A:BLJ31_velocity_sensor" joint="A:BLJ31"/>
+    <jointvel name="A:BLJ32_velocity_sensor" joint="A:BLJ32"/>
+    <jointvel name="A:BRJ40_velocity_sensor" joint="A:BRJ40"/>
+    <jointvel name="A:BRJ41_velocity_sensor" joint="A:BRJ41"/>
+    <jointvel name="A:BRJ42_velocity_sensor" joint="A:BRJ42"/>
+  </sensor>
+</mujocoinclude>

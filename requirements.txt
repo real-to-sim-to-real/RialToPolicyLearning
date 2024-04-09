@@ -1,0 +1,13 @@
+open3d-python
+gym==0.26.0
+meshcat
+transforms3d
+seaborn
+wandb 
+opencv-python
+yourdfpy
+moviepy 
+imageio
+stable_baselines3==1.6.2
+# torch-scatter -f https://data.pyg.org/whl/torch-1.13.0+cu117.html --no-index
+# torch-cluster -f https://data.pyg.org/whl/torch-1.13.0+cu117.html --no-index

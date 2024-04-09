@@ -1,0 +1,27 @@
+{
+  "algorithm_kwargs": {
+    "batch_size": 256,
+    "max_path_length": 1000,
+    "min_num_steps_before_training": 1000,
+    "num_epochs": 3000,
+    "num_eval_steps_per_epoch": 5000,
+    "num_expl_steps_per_train_loop": 1000,
+    "num_trains_per_train_loop": 1000
+  },
+  "policy_kwargs": {
+    "hidden_sizes": [
+      400,
+      300
+    ]
+  },
+  "qf_kwargs": {
+    "hidden_sizes": [
+      400,
+      300
+    ]
+  },
+  "replay_buffer_size": 1000000,
+  "trainer_kwargs": {
+    "discount": 0.99
+  }
+}
