@@ -194,7 +194,7 @@ conda install -c pytorch -c fair-robotics -c aihabitat -c conda-forge polymetis
 - Clone and install [airobot](https://github.com/Improbable-AI/airobot)
 - Clone and install [improbable_rdt]()
   - git clone --recurse git@github.com:anthonysimeonov/improbable_rdt.git
-
+  - git checkout lightweight-marcel 
 ```
 pip install torch-scatter -f https://data.pyg.org/whl/torch-1.13.0+cu117.html --no-index
 pip install torch-cluster -f https://data.pyg.org/whl/torch-1.13.0+cu117.html --no-index
