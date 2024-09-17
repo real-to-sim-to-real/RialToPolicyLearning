@@ -54,7 +54,7 @@ python -c "import omni.isaac.orbit; print('Orbit configuration is now complete.'
 
 4. Clone repo
 ```
-git clone git@github.com:IAILeveragingRealToSim/PolicyLearning.git
+git clone git@github.com:real-to-sim-to-real/RialToPolicyLearning.git
 git checkout dev-massive-huge
 cd PolicyLearning
 pip install -r requirements.txt
